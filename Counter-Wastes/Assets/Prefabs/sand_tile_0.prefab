@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5280511321415119179}
   - component: {fileID: 3166703036623963677}
+  - component: {fileID: 114367846470210532}
   m_Layer: 0
-  m_Name: sand_tile
+  m_Name: sand_tile_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &114367846470210532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021626339608404320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa3fe782e8bfdd49abb1e019935c047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
