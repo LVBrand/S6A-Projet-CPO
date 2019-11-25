@@ -243,3 +243,5 @@ MonoBehaviour:
   - {fileID: 1021626339608404320, guid: 770c32ca4e9fa034bb85ab32c9d18a41, type: 3}
   - {fileID: 511942618750839244, guid: c13869593511fee4c91e0885933012fb, type: 3}
   - {fileID: 511942618750839244, guid: 6517c3b36f3f1b345b3a05b1d8ad40ea, type: 3}
+  spawnPrefab: {fileID: 511942618750839244, guid: ed2b7bec1fef0d84fb57f5e05cf6c05a,
+    type: 3}

@@ -10,7 +10,15 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private GameObject[] tilePrefabs;
-    
+
+    //création des points de spawns
+    private Point spawnPoint0, spawnPoint1, spawnPoint2, spawnPoint3, spawnPoint4, spawnPoint5;
+
+    //créations d'un préfab de points de spawn
+    [SerializeField]
+    private GameObject spawnPrefab;
+
+    //création d'un dictionnaire pour chopper la position des tiles
     public Dictionary<Point, TileScript> Tiles { get; set; }
     
     // calculer la taille des tiles, on l'utilise pour bien positionner les tiles 
@@ -68,9 +76,9 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-
         maxTile = Tiles[new Point(mapSizeX - 1, mapSizeY - 1)].transform.position;
 
+        SpawnPoints();
     }
 
 
@@ -101,5 +109,25 @@ public class LevelManager : MonoBehaviour
         //on coupe par le caractère "-" dans notre fichier texte
         return data.Split('-');
 
+    }
+
+    
+    private void SpawnPoints()
+    {
+        //on va générer les spawns
+        spawnPoint0 = new Point(14, 1);
+        spawnPoint1 = new Point(14, 2);
+        spawnPoint2 = new Point(14, 3);
+        spawnPoint3 = new Point(14, 4);
+        spawnPoint4 = new Point(14, 5);
+        spawnPoint5 = new Point(14, 6);
+
+        //on instancie tous les spawns centrés sur des tiles bien précis
+        Instantiate(spawnPrefab, Tiles[spawnPoint0].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+        Instantiate(spawnPrefab, Tiles[spawnPoint1].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+        Instantiate(spawnPrefab, Tiles[spawnPoint2].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+        Instantiate(spawnPrefab, Tiles[spawnPoint3].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+        Instantiate(spawnPrefab, Tiles[spawnPoint4].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+        Instantiate(spawnPrefab, Tiles[spawnPoint5].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
     }
 }

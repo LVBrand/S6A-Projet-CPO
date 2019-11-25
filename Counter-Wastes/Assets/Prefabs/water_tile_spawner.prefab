@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7915188010333463069}
   - component: {fileID: 5140915934505466464}
-  - component: {fileID: 114284267378466344}
+  - component: {fileID: 114237056835297780}
   m_Layer: 0
-  m_Name: menu_tile
+  m_Name: water_tile_spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,9 +68,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1ea3c0356d6f4b14993c14c2ce941798, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.3529412, g: 0.9019608, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114284267378466344
+--- !u!114 &114237056835297780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
