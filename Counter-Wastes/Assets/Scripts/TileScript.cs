@@ -30,10 +30,34 @@ public class TileScript : MonoBehaviour
         
     }
 
-    public void Setup(Point gridPos, Vector2 worldPos)
+    public void Setup(Point gridPos, Vector2 worldPos, Transform parent)
     {
         this.GridPosition = gridPos;
         transform.position = worldPos;
+        transform.SetParent(parent);
 
+        LevelManager.Instance.Tiles.Add(gridPos, this);
+
+    }
+
+    // chopper la position du curseur
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            PlaceTower();
+        }
+    }
+
+    private void PlaceTower()
+    {
+        // on instancie les tours
+        GameObject tower = (GameObject)Instantiate(GameManager.Instance.TowerPrefab, transform.position, Quaternion.identity);
+
+        // on fait en sorte que les sprites se chevauchent suivant l'ordre de Y (relief)
+        tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.Y;
+    
+        // fait en sorte que quand on place une tour, elle est instanciée comme objet fille du tile où elle est placée
+        tower.transform.SetParent(transform);
     }
 }

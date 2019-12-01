@@ -5,7 +5,7 @@ using System;
 
 
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
 
     [SerializeField]
@@ -17,6 +17,9 @@ public class LevelManager : MonoBehaviour
     //créations d'un préfab de points de spawn
     [SerializeField]
     private GameObject spawnPrefab;
+
+    [SerializeField]
+    private Transform map;
 
     //création d'un dictionnaire pour chopper la position des tiles
     public Dictionary<Point, TileScript> Tiles { get; set; }
@@ -92,10 +95,10 @@ public class LevelManager : MonoBehaviour
         TileScript newTile = Instantiate(tilePrefabs[tileIndex]).GetComponent<TileScript>();
 
         // Utilisation de la variable newTile pour changer la position du tile
-        newTile.Setup(new Point(x, y), new Vector2(worldStart.x + (TileSize * x), worldStart.y - (TileSize * y)));
+        newTile.Setup(new Point(x, y), new Vector2(worldStart.x + (TileSize * x), worldStart.y - (TileSize * y)),map);
 
-        //On ajoute chaque newTile dans le dictionnaire Tiles
-        Tiles.Add(new Point(x, y), newTile);
+       /* //On ajoute chaque newTile dans le dictionnaire Tiles
+        Tiles.Add(new Point(x, y), newTile); */
 
     }
 
