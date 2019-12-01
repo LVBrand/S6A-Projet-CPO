@@ -23,7 +23,7 @@ public class Monster : MonoBehaviour
 
         if((Vector2)transform.position == destination)
         {
-
+            Release();
         }
     }
 
@@ -31,6 +31,20 @@ public class Monster : MonoBehaviour
     {
         int nbLane = Random.Range(0, 6);
         transform.position = LevelManager.Instance.spawn[nbLane].transform.position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D otherObject)
+    {
+        if(otherObject.tag == "heavy_tower")
+        {
+            speed = 0;
+            //Rajouter les dégats fait à la tour.
+        }
+    }
+
+    private void Release()
+    {
+        GameManager.Instance.Pool.ReleaseObject(gameObject);
     }
 
 }
