@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -21,7 +22,28 @@ public class GameManager : Singleton<GameManager>
 
     private bool gameOver = false;
 
+    private int vies;
+    public int Vies
+    {
+        set
+        {
+            this.vies = value;
 
+            if (vies <= 0)
+            {
+                this.vies = 0;
+                GameOver();
+            }
+            texteVie.text = vies.ToString();
+        }
+        get
+        {
+            return vies;
+        }
+    }
+
+    [SerializeField]
+    private Text texteVie;
 
 
     public bool WaveActive
@@ -103,5 +125,10 @@ public class GameManager : Singleton<GameManager>
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Start()
+    {
+        vies = 3;
     }
 }
