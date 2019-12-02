@@ -24,6 +24,7 @@ public class Monster : MonoBehaviour
         if((Vector2)transform.position == destination)
         {
             Release();
+            GameManager.Instance.GameOver();
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -12,7 +13,16 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject startButton;         //Le bouton de départ du lvl
 
+    [SerializeField]
+    private GameObject gameOverMenu;         //Le menu de gameOver
+
+
     private List<Monster> activeMonsters = new List<Monster>();     //un liste contenant les monstres actifs
+
+    private bool gameOver = false;
+
+
+
 
     public bool WaveActive
     {
@@ -69,22 +79,29 @@ public class GameManager : Singleton<GameManager>
     public void RemoveMonster(Monster m)
     {
         activeMonsters.Remove(m);
-        if (!WaveActive)
+        if (!WaveActive && !gameOver)
         {
             startButton.SetActive(true);
         }
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void GameOver()
     {
-        
+        if (!gameOver)
+        {
+            gameOver = true;
+            gameOverMenu.SetActive(true);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Restart()
     {
-        
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
