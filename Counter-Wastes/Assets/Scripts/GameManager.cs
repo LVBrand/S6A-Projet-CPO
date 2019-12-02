@@ -51,7 +51,9 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Hover.Instance.Deactivate();
+            //Hover.Instance.Deactivate();
+
+            ShowMenuPause();
         }
     }
 
