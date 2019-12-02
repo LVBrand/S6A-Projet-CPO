@@ -47,6 +47,14 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    private void HandleEscape()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Hover.Instance.Deactivate();
+        }
+    }
+
     public void StartWave()
     {
         StartCoroutine(SpawnWave());
