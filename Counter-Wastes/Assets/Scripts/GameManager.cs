@@ -9,6 +9,19 @@ public class GameManager : Singleton<GameManager>
     private GameObject towerPrefab;
     public ObjectPool Pool { get; set; }
 
+    [SerializeField]
+    private GameObject startButton;         //Le bouton de départ du lvl
+
+    private List<Monster> activeMonsters = new List<Monster>();     //un liste contenant les monstres actifs
+
+    public bool WaveActive
+    {
+        get
+        {
+            return activeMonsters.Count > 0;
+        }
+    }
+
     private void Awake()
     {
         Pool = GetComponent<ObjectPool>();
@@ -25,25 +38,41 @@ public class GameManager : Singleton<GameManager>
     public void StartWave()
     {
         StartCoroutine(SpawnWave());
+
+        startButton.SetActive(false);
     }
 
     private IEnumerator SpawnWave()
     {
-
-        //int monsterIndex = Random.Range(0, 1); //On changera cette ligne lorsqu'on aura plus d'un ennemi
-        int monsterIndex = 0;
-        string type = string.Empty;
-
-        switch (monsterIndex)   //Rajouter autant de case qu'il y a d'ennemi
+        for (int i = 0; i < 10; i++)
         {
-            case 0:
-                type = "Gaben";
-                break;
-        }
+            //int monsterIndex = Random.Range(0, 1); //On changera cette ligne lorsqu'on aura plus d'un ennemi
+            int monsterIndex = 0;
+            string type = string.Empty;
 
-        Monster monster = Pool.GetObject(type).GetComponent<Monster>();
-        monster.Spawn();
-        yield return new WaitForSeconds(2.5f);
+            switch (monsterIndex)   //Rajouter autant de case qu'il y a d'ennemi
+            {
+                case 0:
+                    type = "Gaben";
+                    break;
+            }
+
+            Monster monster = Pool.GetObject(type).GetComponent<Monster>();
+
+            activeMonsters.Add(monster);
+
+            monster.Spawn();
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    public void RemoveMonster(Monster m)
+    {
+        activeMonsters.Remove(m);
+        if (!WaveActive)
+        {
+            startButton.SetActive(true);
+        }
     }
 
 

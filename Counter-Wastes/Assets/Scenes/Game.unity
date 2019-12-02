@@ -548,6 +548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 478992757911758821, guid: 31eeab364e37a31459f769e3f0704488,
     type: 3}
+  startButton: {fileID: 1199145408}
 --- !u!4 &546377147
 Transform:
   m_ObjectHideFlags: 0

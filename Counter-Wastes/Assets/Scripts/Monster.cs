@@ -45,6 +45,7 @@ public class Monster : MonoBehaviour
     private void Release()
     {
         GameManager.Instance.Pool.ReleaseObject(gameObject);
+        GameManager.Instance.RemoveMonster(this);
     }
 
 }
