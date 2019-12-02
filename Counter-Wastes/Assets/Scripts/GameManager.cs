@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject gameOverMenu;         //Le menu de gameOver
 
+    [SerializeField]
+    private GameObject menuPause;
 
     private List<Monster> activeMonsters = new List<Monster>();     //un liste contenant les monstres actifs
 
@@ -103,5 +105,10 @@ public class GameManager : Singleton<GameManager>
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowMenuPause()
+    {
+        menuPause.SetActive(!menuPause.activeSelf);
     }
 }
