@@ -11,11 +11,15 @@ public class GameManager : Singleton<GameManager>
         get; set;
     }
 
+
     private int currency;
+
 
     [SerializeField]
     private Text currencyTxt;
 
+
+    public ObjectPool Pool { get; set; }
 
 
     public int Currency
@@ -33,12 +37,18 @@ public class GameManager : Singleton<GameManager>
     }
 
 
+    private void Awake()
+    {
+        Pool = GetComponent<ObjectPool>();
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
         Currency = 50;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -59,6 +69,7 @@ public class GameManager : Singleton<GameManager>
 
     }
 
+
     public void BuyTower()
     {
         if (Currency >= ClickedButton.Price)
@@ -77,4 +88,36 @@ public class GameManager : Singleton<GameManager>
             Hover.Instance.Deactivate();
         }  
     }
+
+
+    public void StartWave()
+    {
+        StartCoroutine(SpawnWave());
+    }
+
+
+    private IEnumerator SpawnWave()
+    {
+        int monsterIndex = Random.Range(0, 2);
+
+        string type = string.Empty;
+
+        switch (monsterIndex)
+        {
+            case 0:
+                type = "monster_gaben";
+                break;
+            case 1:
+                type = "monster_knight";
+                break;
+            default:
+                break;
+
+        }
+
+        Pool.GetObject(type); // GetComponent<Monster>();
+
+        yield return new WaitForSeconds(2.5f);
+    }
+
 }

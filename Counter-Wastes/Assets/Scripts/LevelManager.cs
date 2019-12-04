@@ -11,8 +11,6 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField]
     private GameObject[] tilePrefabs;
 
-    /*//création des points de spawns
-    private Point spawnPoint0, spawnPoint1, spawnPoint2, spawnPoint3, spawnPoint4, spawnPoint5;*/
 
     //créations d'un préfab de points de spawn
     [SerializeField]
@@ -27,7 +25,16 @@ public class LevelManager : Singleton<LevelManager>
     // calculer la taille des tiles, on l'utilise pour bien positionner les tiles 
     public float TileSize
     {
-        get { return tilePrefabs[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x; }
+        get { return TilePrefabs[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x; }
+    }
+
+
+    public GameObject[] TilePrefabs
+    {
+        get
+        {
+            return tilePrefabs;
+        }
     }
 
 
@@ -36,6 +43,7 @@ public class LevelManager : Singleton<LevelManager>
     void Start()
     {
         CreateLevel();
+        
     }
 
 
@@ -52,7 +60,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         Tiles = new Dictionary<Point, TileScript>();
 
-        // instanciation temporaire de la tilemap, on utilise un documen texte pour le remplacer
+        // instanciation temporaire de la tilemap, on utilise un document texte pour le remplacer
         string[] mapData = ReadLevelText();
 
         // Calcul de x (map)
@@ -92,14 +100,13 @@ public class LevelManager : Singleton<LevelManager>
         int tileIndex = int.Parse(tileType);
 
         // Création d'un nouveau tile et référencement de ce dernier dans la variable newTile
-        TileScript newTile = Instantiate(tilePrefabs[tileIndex]).GetComponent<TileScript>();
+        TileScript newTile = Instantiate(TilePrefabs[tileIndex]).GetComponent<TileScript>();
 
         // Utilisation de la variable newTile pour changer la position du tile
         newTile.Setup(new Point(x, y), new Vector2(worldStart.x + (TileSize * x), worldStart.y - (TileSize * y)),map);
 
-       /* //On ajoute chaque newTile dans le dictionnaire Tiles
-        Tiles.Add(new Point(x, y), newTile); */
-
+        /* //On ajoute chaque newTile dans le dictionnaire Tiles
+         Tiles.Add(new Point(x, y), newTile); */
     }
 
     

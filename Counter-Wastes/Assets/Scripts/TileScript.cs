@@ -21,6 +21,7 @@ public class TileScript : MonoBehaviour
         get; private set;
     }
 
+
     private SpriteRenderer spriteRenderer;
 
     //avoir le centre d'un tile
@@ -103,6 +104,7 @@ public class TileScript : MonoBehaviour
         IsEmpty = false;
 
         GameManager.Instance.BuyTower();
+
     }
 
     private void ColorTile(Color newColor)
