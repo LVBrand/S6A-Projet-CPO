@@ -19,6 +19,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject menuPause;
 
+    [SerializeField]
+    private GameObject testWave;
+
     private List<Monster> activeMonsters = new List<Monster>();     //un liste contenant les monstres actifs
 
     private bool gameOver = false;
@@ -120,5 +123,21 @@ public class GameManager : Singleton<GameManager>
     public void ShowMenuPause()
     {
         menuPause.SetActive(!menuPause.activeSelf);
+    }
+
+    public void VagueAutomatique()
+    {
+        Time.timeScale = 10;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        startButton.SetActive(true);
+
+        if (!gameOver)
+        {
+            gameOver = true;
+            gameOverMenu.SetActive(true);
+        }
+
+        Time.timeScale = 10;
     }
 }
