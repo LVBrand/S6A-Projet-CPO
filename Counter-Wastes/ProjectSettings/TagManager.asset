@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Undefined
+  - Tile_Placable
+  - Tile_Non_Placable
   layers:
   - Default
   - TransparentFX

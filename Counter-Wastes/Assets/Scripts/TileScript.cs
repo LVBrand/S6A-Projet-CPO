@@ -78,7 +78,11 @@ public class TileScript : MonoBehaviour
             //si elle n'est pas vide, on place une tour, sinon, non
             else if (Input.GetMouseButtonDown(0))
             {
-                PlaceTower();
+                if (this.tag == "Tile_Placable")
+                {
+                    PlaceTower();
+                }
+
             }
         }
     }
