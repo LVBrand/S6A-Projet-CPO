@@ -6,21 +6,20 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
 
-    public TowerButton ClickedButton
-    {
-        get; set;
-    }
-
-
-    private int currency;
-
+    [SerializeField]
+    private Text waveText;
 
     [SerializeField]
     private Text currencyTxt;
 
+    [SerializeField]
+    private GameObject waveButton;
 
     public ObjectPool Pool { get; set; }
 
+    private int wave = 0;
+
+    private int currency;
 
     public int Currency
     {
@@ -36,6 +35,21 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public TowerButton ClickedButton
+    {
+        get; set;
+    }
+
+    private List<Monster> activeMonsters = new List<Monster>();     //un liste contenant les monstres actifs
+
+
+    public bool WaveActive
+    {
+        get
+        {
+            return activeMonsters.Count > 0;
+        }
+    } 
 
     private void Awake()
     {
@@ -92,32 +106,56 @@ public class GameManager : Singleton<GameManager>
 
     public void StartWave()
     {
+        wave++;
+
+        waveText.text = string.Format("Wave: <color=lime>{0}</color>", wave);
+
         StartCoroutine(SpawnWave());
+
+        waveButton.SetActive(false);
+
     }
 
 
     private IEnumerator SpawnWave()
     {
-        int monsterIndex = Random.Range(0, 2);
-
-        string type = string.Empty;
-
-        switch (monsterIndex)
+        for (int i = 0; i < wave; i++)
         {
-            case 0:
-                type = "monster_gaben";
-                break;
-            case 1:
-                type = "monster_knight";
-                break;
-            default:
-                break;
+            int monsterIndex = Random.Range(0, 2);
 
+            string type = string.Empty;
+
+            switch (monsterIndex)
+            {
+                case 0:
+                    type = "monster_gaben";
+                    break;
+                case 1:
+                    type = "monster_knight";
+                    break;
+                default:
+                    break;
+
+            }
+
+            Monster monster = Pool.GetObject(type).GetComponent<Monster>();
+
+            monster.Spawn();
+
+            activeMonsters.Add(monster);
+
+            yield return new WaitForSeconds(0.5f);
         }
+    }
 
-        Monster monster = Pool.GetObject(type).GetComponent<Monster>();
-        monster.Spawn();
-        yield return new WaitForSeconds(0.5f);
+    public void RemoveMonster(Monster monster)
+    {
+        activeMonsters.Remove(monster);
+
+        if(!WaveActive)
+        {
+            waveButton.SetActive(true);
+        }
     }
 
 }
