@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5626724557191963216}
   - component: {fileID: 816022613177878121}
+  - component: {fileID: 114629779449298096}
   m_Layer: 0
   m_Name: monster_knight
   m_TagString: Untagged
@@ -79,3 +80,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &114629779449298096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634584336646702030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e895418703d76a47a3265220f4ff056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -16,6 +16,8 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField]
     private GameObject spawnPrefab;
 
+    public List<Spawn> spawn { get; set; }
+
     [SerializeField]
     private Transform map;
 
@@ -121,35 +123,24 @@ public class LevelManager : Singleton<LevelManager>
 
     }
 
-    
+
     private void SpawnPoints()
     {
         //on va générer les spawns
-        List<Point> spawnPoint = new List<Point>(6);
-        for(int i = 1; i < 7; i++)
+        List<Point> spawnPoint = new List<Point>();
+        for (int i = 1; i < 7; i++)
         {
             spawnPoint.Add(new Point(14, i));
         }
-
-        /*spawnPoint0 = new Point(14, 1);
-        spawnPoint1 = new Point(14, 2);
-        spawnPoint2 = new Point(14, 3);
-        spawnPoint3 = new Point(14, 4);
-        spawnPoint4 = new Point(14, 5);
-        spawnPoint5 = new Point(14, 6);*/
 
         //on instancie tous les spawns centrés sur des tiles bien précis
         foreach (Point sPoint in spawnPoint)
         {
             GameObject tmp = (GameObject)Instantiate(spawnPrefab, Tiles[sPoint].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+            if (spawn == null) { spawn = new List<Spawn>(); }   //Cette ligne permet d'initialiser la list spawn si ce n'est pas déjà fait
+            spawn.Add(tmp.GetComponent<Spawn>());
+            int nbDeSpawn = spawn.Count;
+            spawn[nbDeSpawn - 1].name = "Spawn" + nbDeSpawn;
         }
-
-        //on instancie tous les spawns centrés sur des tiles bien précis
-        /*Instantiate(spawnPrefab, Tiles[spawnPoint0].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
-        Instantiate(spawnPrefab, Tiles[spawnPoint1].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
-        Instantiate(spawnPrefab, Tiles[spawnPoint2].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
-        Instantiate(spawnPrefab, Tiles[spawnPoint3].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
-        Instantiate(spawnPrefab, Tiles[spawnPoint4].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
-        Instantiate(spawnPrefab, Tiles[spawnPoint5].GetComponent<TileScript>().WorldPosition, Quaternion.identity);*/
     }
 }
