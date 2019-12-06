@@ -115,9 +115,11 @@ public class GameManager : Singleton<GameManager>
 
         }
 
-        Pool.GetObject(type); // GetComponent<Monster>();
+        Monster monster = Pool.GetObject(type).GetComponent<Monster>();
 
-        yield return new WaitForSeconds(2.5f);
+        monster.Spawn();
+
+        yield return new WaitForSeconds(0.5f);
     }
 
 }
