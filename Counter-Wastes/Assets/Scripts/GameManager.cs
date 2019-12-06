@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
@@ -15,9 +16,39 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject waveButton;
 
+    [SerializeField]
+    private Text texteVie;
+
+    [SerializeField]
+    private GameObject gameOverMenu;
+
     public ObjectPool Pool { get; set; }
 
     private int wave = 0;
+
+
+    private bool gameOver = false;
+
+    private int vies;
+
+    public int Vies
+    {
+        get
+        {
+            return vies;
+        }
+        set
+        {
+            this.vies = value;
+
+            if (vies <= 0)
+            {
+                this.vies = 0;
+                GameOver();
+            }
+            texteVie.text = vies.ToString();
+        }
+    }
 
     private int currency;
 
@@ -60,6 +91,7 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
+        Vies = 0;
         Currency = 50;
     }
 
@@ -152,10 +184,30 @@ public class GameManager : Singleton<GameManager>
     {
         activeMonsters.Remove(monster);
 
-        if(!WaveActive)
+        if(!WaveActive && !gameOver)
         {
             waveButton.SetActive(true);
         }
+    }
+
+    public void GameOver()
+    {
+        if (!gameOver)
+        {
+            gameOver = true;
+            gameOverMenu.SetActive(true);
+        }
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
 }
