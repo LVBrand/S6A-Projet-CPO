@@ -7,7 +7,7 @@ TagManager:
   - Undefined
   - Tile_Placable
   - Tile_Non_Placable
-  - heavy_tower
+  - tower
   layers:
   - Default
   - TransparentFX

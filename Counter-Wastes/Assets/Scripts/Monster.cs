@@ -47,7 +47,7 @@ public class Monster : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D otherObject)
     {
-        if (otherObject.tag == "heavy_tower")
+        if (otherObject.tag == "tower")
         {
             speed = 0;
             //Rajouter les dégats fait à la tour.
