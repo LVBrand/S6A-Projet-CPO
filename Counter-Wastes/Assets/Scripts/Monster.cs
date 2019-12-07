@@ -10,6 +10,18 @@ public class Monster : MonoBehaviour
 
     public Point GridPosition { get; set; }
 
+    public bool monsterInLane()
+    {
+        foreach (Monster m in GameManager.Instance.ActiveMonsters)
+        {
+            if (m.transform.position.y == transform.position.y)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void Update()
     {
         Move();

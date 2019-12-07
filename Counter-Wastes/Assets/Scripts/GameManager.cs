@@ -28,6 +28,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject optionsMenu;
 
+    //current selected tower
+    private Tower selectedTower;
+
     public ObjectPool Pool { get; set; }
 
     private int wave = 0;
@@ -78,6 +81,15 @@ public class GameManager : Singleton<GameManager>
     }
 
     private List<Monster> activeMonsters = new List<Monster>();     //un liste contenant les monstres actifs
+
+    public List<Monster> ActiveMonsters // ça permet de savoir si ya un monster dans la lane
+    {
+        get
+        {
+            return activeMonsters;
+        }
+    }
+     
 
 
     public bool WaveActive
@@ -130,6 +142,12 @@ public class GameManager : Singleton<GameManager>
             Hover.Instance.Deactivate();
         }
 
+    }
+
+    public void SelectTower(Tower tower)
+    {
+        selectedTower = tower;
+        selectedTower.Select();
     }
 
 
