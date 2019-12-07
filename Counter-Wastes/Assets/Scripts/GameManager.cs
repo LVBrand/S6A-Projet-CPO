@@ -92,7 +92,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         Vies = 3;
-        Currency = 5000;
+        Currency = 200;
     }
 
 
