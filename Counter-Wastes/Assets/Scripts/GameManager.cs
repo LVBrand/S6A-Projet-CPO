@@ -91,8 +91,8 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        Vies = 0;
-        Currency = 50;
+        Vies = 3;
+        Currency = 5000;
     }
 
 
@@ -151,7 +151,7 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        for (int i = 0; i < wave; i++)
+        for (int i = 0; i < 10 /*wave*/; i++)
         {
             int monsterIndex = Random.Range(0, 2);
 
@@ -176,7 +176,7 @@ public class GameManager : Singleton<GameManager>
 
             activeMonsters.Add(monster);
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.0f);
         }
     }
 
@@ -208,6 +208,7 @@ public class GameManager : Singleton<GameManager>
 
     public void QuitGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 

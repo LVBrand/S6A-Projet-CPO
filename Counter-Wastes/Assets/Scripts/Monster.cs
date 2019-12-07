@@ -26,21 +26,23 @@ public class Monster : MonoBehaviour
         Vector2 destination = new Vector2(-5, transform.position.y);
         transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
 
-        /*if ((Vector2)transform.position == destination)
+        if ((Vector2)transform.position == destination)
         {
             Release();
             GameManager.Instance.Vies--;
-        }*/
+        }
     }
-
-    /*private void OnTriggerEnter2D(Collider2D otherObject)
+    
+    private void OnTriggerEnter2D(Collider2D otherObject)
     {
+        Debug.Log("prout");
         if (otherObject.tag == "heavy_tower")
         {
+            Debug.Log("caca");
             speed = 0;
             //Rajouter les dégats fait à la tour.
         }
-    }*/
+    }
 
     private void Release()
     {
