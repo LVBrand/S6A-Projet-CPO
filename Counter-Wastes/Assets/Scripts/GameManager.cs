@@ -22,6 +22,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject gameOverMenu;
 
+    [SerializeField]
+    private GameObject inGameMenu;
+
+    [SerializeField]
+    private GameObject optionsMenu;
+
     public ObjectPool Pool { get; set; }
 
     private int wave = 0;
@@ -131,7 +137,16 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Hover.Instance.Deactivate();
+            if (!Hover.Instance.IsVisible)
+            {
+                ShowIngameMenu();
+            }
+            
+
+            if (Hover.Instance.IsVisible)
+            {
+                DropTower();
+            }
         }  
     }
 
@@ -210,6 +225,46 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+
+    public void ShowIngameMenu()
+    {
+        if (optionsMenu.activeSelf)
+        {
+            ShowMain();
+        }
+        else
+        {
+            inGameMenu.SetActive(!inGameMenu.activeSelf);
+            if (!inGameMenu.activeSelf)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }
+        }
+
+    }
+
+    private void DropTower()
+    {
+        ClickedButton = null;
+        Hover.Instance.Deactivate();
+    }
+
+    public void ShowOptions()
+    {
+        inGameMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+    }
+
+    public void ShowMain()
+    {
+        inGameMenu.SetActive(true);
+        optionsMenu.SetActive(false);
     }
 
 }

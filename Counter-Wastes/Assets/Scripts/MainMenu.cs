@@ -5,9 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject optionsMenu;
+
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void NewGame()
+    {
+        PlayGame();
     }
 
     public void QuitGame()
@@ -15,5 +23,24 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
+    public void OptionsBack()
+    {
+        optionsMenu.SetActive(false);
+    }
+
+    public void Options()
+    {
+        optionsMenu.SetActive(true);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OptionsBack();
+        }
+    }
+ 
+
+ 
+    
 
 }
