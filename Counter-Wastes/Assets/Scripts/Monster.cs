@@ -77,7 +77,6 @@ public class Monster : MonoBehaviour
         }
         if (otherObject.tag == "projectile")
         {
-            Debug.Log("c");
             StartCoroutine(damageFlash());
             Life-=otherObject.gameObject.GetComponent<Projectile>().Damage;
             GameManager.Instance.Pool.ReleaseObject(otherObject.gameObject);
@@ -85,11 +84,12 @@ public class Monster : MonoBehaviour
     }
 
 
-    IEnumerator attackTower(GameObject tower)
+    public IEnumerator attackTower(GameObject tower)
     {
         for (int nbDeCoupsNecessaires = (int)(tower.GetComponent<Tower>().Life / damage) + 1; nbDeCoupsNecessaires >= 0; nbDeCoupsNecessaires--)
         {
             if (!tower) { speed = maxSpeed; break; }
+            tower.GetComponent<Tower>().damageFlash();
             tower.GetComponent<Tower>().Life -= damage;
             if (tower.GetComponent<Tower>().Life == 0)
             {

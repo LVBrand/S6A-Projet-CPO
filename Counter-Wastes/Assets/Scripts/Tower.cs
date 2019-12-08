@@ -57,12 +57,36 @@ public class Tower : MonoBehaviour
         return false;
     }
 
+    public IEnumerator damageFlash()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
+                    break;
+                case 1:
+                    transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+                    break;
+                case 2:
+                    transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
+                    break;
+                case 3:
+                    transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+                    break;
+            }
+            yield return new WaitForSeconds(0.10f);
+        }
+    }
+
 
     private void SpawnProjectile()
     {
         if (!monsterInLane()) { return; }
         Projectile projectile = GameManager.Instance.Pool.GetObject("projectile").GetComponent<Projectile>();
         projectile.transform.position = transform.position + new Vector3(0.5f, -0.5f, 0);
+        transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
     }
 
     public void Select()
