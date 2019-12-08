@@ -89,9 +89,15 @@ public class Monster : MonoBehaviour
     {
         for (int nbDeCoupsNecessaires = (int)(tower.GetComponent<Tower>().Life / damage) + 1; nbDeCoupsNecessaires >= 0; nbDeCoupsNecessaires--)
         {
-            if (!tower) { speed = maxSpeed; break; }
+
+            if (!tower)
+            {
+                speed = maxSpeed;
+                break;
+            }
             tower.GetComponent<Tower>().damageFlash();
             tower.GetComponent<Tower>().Life -= damage;
+
             if (tower.GetComponent<Tower>().Life == 0)
             {
                 tower.transform.parent.GetComponent<TileScript>().IsEmpty = true;
