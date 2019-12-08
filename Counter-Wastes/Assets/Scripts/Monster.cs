@@ -98,7 +98,7 @@ public class Monster : MonoBehaviour
                 speed = maxSpeed;
                 break;
             }
-            tower.GetComponent<Tower>().damageFlash();
+            StartCoroutine(tower.GetComponent<Tower>().damageFlash());
             tower.GetComponent<Tower>().Life -= damage;
 
             if (tower.GetComponent<Tower>().Life == 0)
@@ -112,6 +112,7 @@ public class Monster : MonoBehaviour
                     break;
                 }
                 tower.transform.parent.GetComponent<TileScript>().IsEmpty = true;
+                tower.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
                 Destroy(tower);
                 speed = maxSpeed;
                 break;
