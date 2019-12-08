@@ -77,6 +77,8 @@ public class Monster : MonoBehaviour
         }
         if (otherObject.tag == "projectile")
         {
+            Debug.Log("c");
+            StartCoroutine(damageFlash());
             Life-=otherObject.gameObject.GetComponent<Projectile>().Damage;
             GameManager.Instance.Pool.ReleaseObject(otherObject.gameObject);
         }
@@ -102,6 +104,29 @@ public class Monster : MonoBehaviour
                 break;
             }
             yield return new WaitForSeconds(attackCooldown);
+        }
+    }
+
+    IEnumerator damageFlash()
+    {
+        for(int i=0; i<4;i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
+                    break;
+                case 1:
+                    transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+                    break;
+                case 2:
+                    transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
+                    break;
+                case 3:
+                    transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+                    break;
+            }
+            yield return new WaitForSeconds(0.10f);
         }
     }
 
