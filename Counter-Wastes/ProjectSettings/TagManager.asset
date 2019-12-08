@@ -9,6 +9,7 @@ TagManager:
   - Tile_Non_Placable
   - heavy_tower
   - projectile
+  - sun_tower
   layers:
   - Default
   - TransparentFX

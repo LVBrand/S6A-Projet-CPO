@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 114053743701773678}
   m_Layer: 0
   m_Name: Solaire
-  m_TagString: heavy_tower
+  m_TagString: sun_tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

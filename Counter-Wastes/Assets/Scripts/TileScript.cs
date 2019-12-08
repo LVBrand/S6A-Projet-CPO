@@ -96,7 +96,10 @@ public class TileScript : MonoBehaviour
     {
         // on instancie les tours
         GameObject tower = (GameObject)Instantiate(GameManager.Instance.ClickedButton.TowerPrefab, transform.position, Quaternion.identity);
-
+        if (tower.tag == "sun_tower")
+        {
+            GameManager.Instance.ActiveSunTowers.Add(tower.GetComponent<Tower>());
+        }
         // on fait en sorte que les sprites se chevauchent suivant l'ordre de Y (relief)
         tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.Y;
 
@@ -108,6 +111,8 @@ public class TileScript : MonoBehaviour
         IsEmpty = false;
 
         GameManager.Instance.BuyTower();
+
+
 
     }
 

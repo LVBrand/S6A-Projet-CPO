@@ -94,10 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e895418703d76a47a3265220f4ff056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.9
+  maxSpeed: 0.4
   maxLife: 125
   damage: 20
   attackCooldown: 1
+  bounty: 15
 --- !u!61 &61918503511911770
 BoxCollider2D:
   m_ObjectHideFlags: 0

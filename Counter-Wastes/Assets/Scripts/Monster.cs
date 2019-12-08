@@ -17,6 +17,9 @@ public class Monster : MonoBehaviour
     [SerializeField]
     private float attackCooldown;
 
+    [SerializeField]
+    private int bounty;
+
     private float life;
 
     private float speed;
@@ -69,7 +72,7 @@ public class Monster : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D otherObject)
     {
-        if (otherObject.tag == "heavy_tower")
+        if (otherObject.tag == "heavy_tower" || otherObject.tag == "sun_tower" )
         {
             speed = 0;
             //otherObject.gameObject.GetComponent<Tower>().Life -= damage;
@@ -100,6 +103,14 @@ public class Monster : MonoBehaviour
 
             if (tower.GetComponent<Tower>().Life == 0)
             {
+                if (tower.tag == "sun_tower")
+                {
+                    tower.transform.parent.GetComponent<TileScript>().IsEmpty = true;
+                    GameManager.Instance.RemoveSunTower(tower.GetComponent<Tower>());
+                    Destroy(tower);
+                    speed = maxSpeed;
+                    break;
+                }
                 tower.transform.parent.GetComponent<TileScript>().IsEmpty = true;
                 Destroy(tower);
                 speed = maxSpeed;
@@ -134,7 +145,9 @@ public class Monster : MonoBehaviour
 
     private void Release()
     {
+
         GameManager.Instance.Pool.ReleaseObject(gameObject);
         GameManager.Instance.RemoveMonster(this);
+        GameManager.Instance.Currency += this.bounty;
     }
 }

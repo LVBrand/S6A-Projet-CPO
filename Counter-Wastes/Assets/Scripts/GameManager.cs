@@ -35,6 +35,8 @@ public class GameManager : Singleton<GameManager>
 
     private int remainingMonsters;
 
+    //private int remainingSunTowers;
+
     private int wave = 0;
 
 
@@ -91,9 +93,23 @@ public class GameManager : Singleton<GameManager>
             return activeMonsters;
         }
     }
+
+    private List<Tower> activeSunTowers = new List<Tower>();
+
+    public List<Tower> ActiveSunTowers
+    {
+        get
+        {
+            return activeSunTowers;
+        }
+        set
+        {
+            this.activeSunTowers = value;
+        }
+    }
      
-
-
+    
+    
     public bool WaveActive
     {
         get
@@ -112,7 +128,8 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         Vies = 3;
-        Currency = 2000;
+        Currency = 20;
+        InvokeRepeating("GenerateCurrency", 0.5f, 2f);
     }
 
 
@@ -176,7 +193,7 @@ public class GameManager : Singleton<GameManager>
         wave++;
 
         waveText.text = string.Format("Wave: <color=lime>{0}</color>", wave);
-        remainingMonsters += 10;
+        remainingMonsters += wave;
         StartCoroutine(SpawnWave());
 
         waveButton.SetActive(false);
@@ -187,7 +204,7 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        for (int i = 0; i < wave+3; i++)
+        for (int i = 0; i < wave; i++)
         {
             int monsterIndex = Random.Range(0, 2);
 
@@ -286,6 +303,16 @@ public class GameManager : Singleton<GameManager>
     {
         inGameMenu.SetActive(true);
         optionsMenu.SetActive(false);
+    }
+
+    public void GenerateCurrency()
+    {
+        Currency += ActiveSunTowers.Count*5;
+    }
+
+    public void RemoveSunTower(Tower sunTower)
+    {
+        ActiveSunTowers.Remove(sunTower);
     }
 
 }
