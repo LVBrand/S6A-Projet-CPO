@@ -61,6 +61,7 @@ public class Tower : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
+            if (!this) { break; }
             switch (i)
             {
                 case 0:

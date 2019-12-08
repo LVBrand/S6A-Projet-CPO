@@ -95,7 +95,7 @@ public class Monster : MonoBehaviour
                 speed = maxSpeed;
                 break;
             }
-            tower.GetComponent<Tower>().damageFlash();
+            StartCoroutine(tower.GetComponent<Tower>().damageFlash());
             tower.GetComponent<Tower>().Life -= damage;
 
             if (tower.GetComponent<Tower>().Life == 0)
