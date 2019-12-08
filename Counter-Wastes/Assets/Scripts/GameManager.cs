@@ -268,7 +268,6 @@ public class GameManager : Singleton<GameManager>
                 Time.timeScale = 0;
             }
         }
-
     }
 
     private void DropTower()
