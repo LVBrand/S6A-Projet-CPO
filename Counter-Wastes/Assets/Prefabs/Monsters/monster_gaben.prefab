@@ -96,6 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 1
   maxLife: 100
+  damage: 2
+  attackCooldown: 1
 --- !u!61 &61918503511911770
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -9,10 +9,33 @@ public class Tower : MonoBehaviour
     [SerializeField]
     private float reloadTime;
 
+    [SerializeField]
+    private float maxLife;
+
+
+    public float Life
+    {
+        get
+        {
+            return life;
+        }
+        set
+        {
+            this.life = value;
+            if (life <= 0)
+            {
+                life = 0;
+            }
+        }
+    }
+
+    private float life;
+
     // Start is called before the first frame update
     void Start()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        life = maxLife;
         InvokeRepeating("SpawnProjectile", 0.0f, reloadTime);
     }
 

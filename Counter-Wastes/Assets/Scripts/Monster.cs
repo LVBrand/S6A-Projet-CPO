@@ -11,6 +11,12 @@ public class Monster : MonoBehaviour
     [SerializeField]
     private float maxLife;
 
+    [SerializeField]
+    private float damage;
+
+    [SerializeField]
+    private float attackCooldown;
+
     private float life;
 
     private float speed;
@@ -65,12 +71,31 @@ public class Monster : MonoBehaviour
         if (otherObject.tag == "heavy_tower")
         {
             speed = 0;
-            //Rajouter les dégats fait à la tour.
+            //otherObject.gameObject.GetComponent<Tower>().Life -= damage;
+            //InvokeRepeating("attackTower", 0.0f, attackSpeed);
+            StartCoroutine(attackTower(otherObject.gameObject));
         }
         if (otherObject.tag == "projectile")
         {
             Life-=otherObject.gameObject.GetComponent<Projectile>().Damage;
             GameManager.Instance.Pool.ReleaseObject(otherObject.gameObject);
+        }
+    }
+
+
+    IEnumerator attackTower(GameObject tower)
+    {
+        for (int nbDeCoupsNecessaires = (int)(tower.GetComponent<Tower>().Life / damage) + 1; nbDeCoupsNecessaires >= 0; nbDeCoupsNecessaires--)
+        {
+            if (!tower) { break; }
+            tower.GetComponent<Tower>().Life -= damage;
+            if (tower.GetComponent<Tower>().Life == 0)
+            {
+                Destroy(tower);
+                speed = maxSpeed;
+                break;
+            }
+            yield return new WaitForSeconds(attackCooldown);
         }
     }
 
