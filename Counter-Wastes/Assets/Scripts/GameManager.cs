@@ -98,7 +98,7 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return activeMonsters.Count > 0 && remainingMonsters==0;
+            return activeMonsters.Count > 0 && remainingMonsters>0;
         }
     } 
 
@@ -221,8 +221,7 @@ public class GameManager : Singleton<GameManager>
         activeMonsters.Remove(monster);
 
         remainingMonsters -= 1;
-
-        if (!WaveActive && !gameOver && remainingMonsters==0)
+        if (!WaveActive && !gameOver)
         {
             waveButton.SetActive(true);
         }
