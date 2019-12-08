@@ -87,9 +87,23 @@ public class Tower : MonoBehaviour
     private void SpawnProjectile()
     {
         if (!monsterInLane()) { return; }
-        Projectile projectile = GameManager.Instance.Pool.GetObject("projectile").GetComponent<Projectile>();
-        projectile.transform.position = transform.position + new Vector3(0.5f, -0.5f, 0);
-        transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+        if (this.tag == "heavy_tower")
+        {
+            Projectile projectile = GameManager.Instance.Pool.GetObject("Sandvich").GetComponent<Projectile>();
+            projectile.transform.position = transform.position + new Vector3(0.5f, -0.5f, 0);
+            transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+        }
+        else if (this.tag != "heavy_tower")
+        {
+            Projectile projectile = GameManager.Instance.Pool.GetObject("projectile").GetComponent<Projectile>();
+            projectile.transform.position = transform.position + new Vector3(0.5f, -0.5f, 0);
+            transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+        }
+        else if (this.tag == "sun_tower")
+        {
+            return;
+        }
+
     }
 
     public void Select()

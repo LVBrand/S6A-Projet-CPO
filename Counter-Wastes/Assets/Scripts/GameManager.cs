@@ -307,7 +307,11 @@ public class GameManager : Singleton<GameManager>
 
     public void GenerateCurrency()
     {
-        Currency += ActiveSunTowers.Count*5;
+        if (WaveActive)
+        {
+            Currency += ActiveSunTowers.Count * 5;
+        }
+
     }
 
     public void RemoveSunTower(Tower sunTower)
