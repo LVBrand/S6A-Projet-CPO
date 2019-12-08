@@ -183,10 +183,11 @@ public class GameManager : Singleton<GameManager>
 
     }
 
+    
 
     private IEnumerator SpawnWave()
     {
-        for (int i = 0; i < 10 /*wave*/; i++)
+        for (int i = 0; i < wave+3; i++)
         {
             int monsterIndex = Random.Range(0, 2);
 
