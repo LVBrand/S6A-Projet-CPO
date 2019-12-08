@@ -87,7 +87,7 @@ public class Monster : MonoBehaviour
     {
         for (int nbDeCoupsNecessaires = (int)(tower.GetComponent<Tower>().Life / damage) + 1; nbDeCoupsNecessaires >= 0; nbDeCoupsNecessaires--)
         {
-            if (!tower) { break; }
+            if (!tower) { speed = maxSpeed; break; }
             tower.GetComponent<Tower>().Life -= damage;
             if (tower.GetComponent<Tower>().Life == 0)
             {
