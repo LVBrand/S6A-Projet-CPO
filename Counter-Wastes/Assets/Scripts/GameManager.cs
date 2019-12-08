@@ -33,6 +33,8 @@ public class GameManager : Singleton<GameManager>
 
     public ObjectPool Pool { get; set; }
 
+    private int remainingMonsters;
+
     private int wave = 0;
 
 
@@ -96,7 +98,7 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return activeMonsters.Count > 0;
+            return activeMonsters.Count > 0 && remainingMonsters==0;
         }
     } 
 
@@ -110,7 +112,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         Vies = 3;
-        Currency = 200;
+        Currency = 2000;
     }
 
 
@@ -174,7 +176,7 @@ public class GameManager : Singleton<GameManager>
         wave++;
 
         waveText.text = string.Format("Wave: <color=lime>{0}</color>", wave);
-
+        remainingMonsters += 10;
         StartCoroutine(SpawnWave());
 
         waveButton.SetActive(false);
@@ -217,7 +219,9 @@ public class GameManager : Singleton<GameManager>
     {
         activeMonsters.Remove(monster);
 
-        if(!WaveActive && !gameOver)
+        remainingMonsters -= 1;
+
+        if (!WaveActive && !gameOver && remainingMonsters==0)
         {
             waveButton.SetActive(true);
         }
