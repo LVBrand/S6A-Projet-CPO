@@ -8,6 +8,7 @@ TagManager:
   - Tile_Placable
   - Tile_Non_Placable
   - heavy_tower
+  - projectile
   layers:
   - Default
   - TransparentFX

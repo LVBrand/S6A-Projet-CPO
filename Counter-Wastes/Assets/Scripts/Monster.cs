@@ -6,21 +6,34 @@ public class Monster : MonoBehaviour
 {
 
     [SerializeField]
+    private float maxSpeed;
+
+    [SerializeField]
+    private float maxLife;
+
+    private float life;
+
     private float speed;
+
+    public float Life
+    {
+        get
+        {
+            return life;
+        }
+        set
+        {
+            this.life = value;
+            if (life <= 0)
+            {
+                life = 0;
+                Release();
+            }
+        }
+    }
 
     public Point GridPosition { get; set; }
 
-    public bool monsterInLane()
-    {
-        foreach (Monster m in GameManager.Instance.ActiveMonsters)
-        {
-            if (m.transform.position.y == transform.position.y)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 
     private void Update()
     {
@@ -31,6 +44,8 @@ public class Monster : MonoBehaviour
     {
         int nbLane = Random.Range(0, 6);
         transform.position = LevelManager.Instance.spawn[nbLane].transform.position;
+        life = maxLife;
+        this.speed = maxSpeed;
     }
 
     private void Move()
@@ -51,6 +66,11 @@ public class Monster : MonoBehaviour
         {
             speed = 0;
             //Rajouter les dégats fait à la tour.
+        }
+        if (otherObject.tag == "projectile")
+        {
+            Life-=otherObject.gameObject.GetComponent<Projectile>().Damage;
+            GameManager.Instance.Pool.ReleaseObject(otherObject.gameObject);
         }
     }
 
