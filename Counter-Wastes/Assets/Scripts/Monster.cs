@@ -101,6 +101,7 @@ public class Monster : MonoBehaviour
             if (tower.GetComponent<Tower>().Life == 0)
             {
                 tower.transform.parent.GetComponent<TileScript>().IsEmpty = true;
+                tower.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
                 Destroy(tower);
                 speed = maxSpeed;
                 break;
