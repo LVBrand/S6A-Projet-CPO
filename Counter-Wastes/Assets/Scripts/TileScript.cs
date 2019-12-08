@@ -18,7 +18,7 @@ public class TileScript : MonoBehaviour
 
     public bool IsEmpty
     {
-        get; private set;
+        get; set;
     }
 
 
