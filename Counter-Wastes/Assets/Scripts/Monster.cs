@@ -52,6 +52,7 @@ public class Monster : MonoBehaviour
         transform.position = LevelManager.Instance.spawn[nbLane].transform.position;
         life = maxLife;
         this.speed = maxSpeed;
+        transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
     }
 
     private void Move()
