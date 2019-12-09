@@ -159,26 +159,17 @@ public class GameManager : Singleton<GameManager>
 
     public void BuyTower()
     {
-        if (WaveActive)
+        if (Currency >= ClickedButton.Price)
         {
-            if (Currency >= ClickedButton.Price)
-            {
-                Currency -= ClickedButton.Price;
-                Hover.Instance.Deactivate();
-            }
+            Currency -= ClickedButton.Price;
+            Hover.Instance.Deactivate();
         }
-
-
     }
 
     public void SelectTower(Tower tower)
     {
-        if (WaveActive)
-        {
-            selectedTower = tower;
-            selectedTower.Select();
-        }
-
+        selectedTower = tower;
+        selectedTower.Select();
     }
 
 
