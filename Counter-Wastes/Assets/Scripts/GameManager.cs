@@ -14,6 +14,9 @@ public class GameManager : Singleton<GameManager>
     private Text currencyTxt;
 
     [SerializeField]
+    private Text currencyEffectTxt;
+
+    [SerializeField]
     private GameObject waveButton;
 
     [SerializeField]
@@ -74,8 +77,35 @@ public class GameManager : Singleton<GameManager>
 
         set
         {
+            if (value == currency)
+            {
+                return;
+            }
+            currencyEffectTxt.transform.position = currencyTxt.transform.position + new Vector3(10,-5,0);
+            if (value > currency)
+            {
+                currencyEffectTxt.text = (value - currency).ToString() + "$";
+                currencyEffectTxt.color = new Color(0, 1, 0, 1f);
+            }
+            else
+            {
+                currencyEffectTxt.text = (currency - value).ToString() + "$";
+                currencyEffectTxt.color = new Color(1, 0, 0, 1f);
+            }
+            StartCoroutine(effectCurrency());
             this.currency = value;
             this.currencyTxt.text = "<color=lime>$</color>" + value.ToString();
+        }
+    }
+
+    private IEnumerator effectCurrency()
+    {
+        for (int i = 0; i<100; i++)
+        {
+            currencyEffectTxt.transform.position -= new Vector3(0, 0.1f,0);
+            currencyEffectTxt.color -= new Color(0,0,0,0.01f);
+            yield return new WaitForSeconds(0.005f);
+            //if()
         }
     }
 
@@ -129,7 +159,7 @@ public class GameManager : Singleton<GameManager>
     {
         Vies = 3;
         Currency = 20;
-        InvokeRepeating("GenerateCurrency", 0.5f, 2f);
+        InvokeRepeating("GenerateCurrency", 0.5f, 4f);
     }
 
 
