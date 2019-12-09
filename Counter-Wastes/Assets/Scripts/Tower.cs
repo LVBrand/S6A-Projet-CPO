@@ -88,6 +88,41 @@ public class Tower : MonoBehaviour
     }
 
 
+    private void OnMouseOver()
+    {
+        if (GameManager.Instance.ClickedButton && GameManager.Instance.ClickedButton.name != "removeTowerButton") return;
+        Color fullColor = new Color32(255, 142, 142, 255);
+        Color32 emptyColor = new Color32(96, 255, 90, 255);
+        TileScript parentTile = transform.parent.GetComponent<TileScript>();
+        transform.parent.GetComponent<TileScript>().ColorTile(fullColor);
+
+        if (parentTile.IsEmpty)
+        {
+            parentTile.ColorTile(fullColor);
+        }
+        else
+        {
+            parentTile.ColorTile(emptyColor);
+            if (Input.GetMouseButtonDown(0))
+            {
+                GameManager.Instance.Currency += 5;
+                if (tag == "sun_tower")
+                {
+                    GameManager.Instance.RemoveSunTower(gameObject.GetComponent<Tower>());
+                }
+                Destroy(this.gameObject);
+                parentTile.IsEmpty = true;
+
+            }
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        transform.parent.GetComponent<TileScript>().ColorTile(Color.white);
+    }
+
+
     private void SpawnProjectile()
     {
         if (!monsterInLane()) { return; }

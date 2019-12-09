@@ -105,7 +105,6 @@ public class GameManager : Singleton<GameManager>
             currencyEffectTxt.transform.position -= new Vector3(0, 0.1f,0);
             currencyEffectTxt.color -= new Color(0,0,0,0.01f);
             yield return new WaitForSeconds(0.005f);
-            //if()
         }
     }
 
@@ -144,7 +143,7 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return /*activeMonsters.Count > 0 &&*/ remainingMonsters>0;
+            return remainingMonsters>0;
         }
     } 
 
