@@ -11,8 +11,7 @@ public class Tower : MonoBehaviour
 
     [SerializeField]
     private float maxLife;
-
-
+    
     public float Life
     {
         get
@@ -93,16 +92,17 @@ public class Tower : MonoBehaviour
             projectile.transform.position = transform.position + new Vector3(0.5f, -0.5f, 0);
             transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
         }
+        else if (this.tag == "sun_tower")
+        {
+            return;
+        }
         else if (this.tag != "heavy_tower")
         {
             Projectile projectile = GameManager.Instance.Pool.GetObject("projectile").GetComponent<Projectile>();
             projectile.transform.position = transform.position + new Vector3(0.5f, -0.5f, 0);
             transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
         }
-        else if (this.tag == "sun_tower")
-        {
-            return;
-        }
+        
 
     }
 
