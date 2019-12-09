@@ -77,7 +77,10 @@ public class Monster : MonoBehaviour
             speed = 0;
             //otherObject.gameObject.GetComponent<Tower>().Life -= damage;
             //InvokeRepeating("attackTower", 0.0f, attackSpeed);
-            StartCoroutine(attackTower(otherObject.gameObject));
+            if (this)
+            {
+                StartCoroutine(attackTower(otherObject.gameObject));
+            }
         }
         if (otherObject.tag == "projectile")
         {
@@ -98,7 +101,7 @@ public class Monster : MonoBehaviour
                 speed = maxSpeed;
                 break;
             }
-            StartCoroutine(tower.GetComponent<Tower>().damageFlash());
+            tower.GetComponent<Tower>().flickering();
             tower.GetComponent<Tower>().Life -= damage;
 
             if (tower.GetComponent<Tower>().Life == 0)
@@ -112,7 +115,6 @@ public class Monster : MonoBehaviour
                     break;
                 }
                 tower.transform.parent.GetComponent<TileScript>().IsEmpty = true;
-                tower.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
                 Destroy(tower);
                 speed = maxSpeed;
                 break;

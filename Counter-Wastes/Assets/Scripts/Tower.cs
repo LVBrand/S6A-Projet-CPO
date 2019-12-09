@@ -56,7 +56,12 @@ public class Tower : MonoBehaviour
         return false;
     }
 
-    public IEnumerator damageFlash()
+    public void flickering()
+    {
+        StartCoroutine("damageFlash");
+    }
+
+    private IEnumerator damageFlash()
     {
         for (int i = 0; i < 4; i++)
         {
