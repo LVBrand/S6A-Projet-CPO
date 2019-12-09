@@ -96,9 +96,9 @@ public class Tower : MonoBehaviour
         {
             return;
         }
-        else if (this.tag != "heavy_tower")
+        else if (this.tag == "scout_tower")
         {
-            Projectile projectile = GameManager.Instance.Pool.GetObject("projectile").GetComponent<Projectile>();
+            Projectile projectile = GameManager.Instance.Pool.GetObject("atomicPunch").GetComponent<Projectile>();
             projectile.transform.position = transform.position + new Vector3(0.5f, -0.5f, 0);
             transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
         }

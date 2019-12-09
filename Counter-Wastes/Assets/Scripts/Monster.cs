@@ -72,7 +72,7 @@ public class Monster : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D otherObject)
     {
-        if (otherObject.tag == "heavy_tower" || otherObject.tag == "sun_tower" )
+        if (otherObject.tag == "heavy_tower" || otherObject.tag == "sun_tower" || otherObject.tag == "scout_tower" )
         {
             speed = 0;
             //otherObject.gameObject.GetComponent<Tower>().Life -= damage;

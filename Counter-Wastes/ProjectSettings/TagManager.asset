@@ -11,6 +11,8 @@ TagManager:
   - projectile
   - sun_tower
   - projectile_sandvich
+  - scout_tower
+  - projectile_atomicPunch
   layers:
   - Default
   - TransparentFX
