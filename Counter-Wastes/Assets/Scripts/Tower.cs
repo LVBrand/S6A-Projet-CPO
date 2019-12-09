@@ -90,7 +90,7 @@ public class Tower : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (GameManager.Instance.ClickedButton && GameManager.Instance.ClickedButton.name != "removeTowerButton") return;
+        if (!GameManager.Instance.ClickedButton || GameManager.Instance.ClickedButton.name != "removeTowerButton") return;
         Color fullColor = new Color32(255, 142, 142, 255);
         Color32 emptyColor = new Color32(96, 255, 90, 255);
         TileScript parentTile = transform.parent.GetComponent<TileScript>();
