@@ -114,7 +114,7 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return activeMonsters.Count > 0 && remainingMonsters>0;
+            return /*activeMonsters.Count > 0 &&*/ remainingMonsters>0;
         }
     } 
 

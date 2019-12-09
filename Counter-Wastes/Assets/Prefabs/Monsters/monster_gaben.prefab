@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0.6
-  maxLife: 125
+  maxLife: 120
   damage: 20
   attackCooldown: 1
   bounty: 15
