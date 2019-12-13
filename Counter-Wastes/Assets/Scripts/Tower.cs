@@ -48,7 +48,7 @@ public class Tower : MonoBehaviour
     {
         foreach (Monster m in GameManager.Instance.ActiveMonsters)
         {
-            if (m.transform.position.y+0.5f == transform.position.y && m.transform.position.x > transform.position.x)
+            if (m.transform.position.y+0.7f >= transform.position.y && m.transform.position.y - 0.3f <= transform.position.y && m.transform.position.x > transform.position.x)
             {
                 return true;
             }
