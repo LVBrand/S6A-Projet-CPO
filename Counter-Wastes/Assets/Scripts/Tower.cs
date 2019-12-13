@@ -70,14 +70,12 @@ public class Tower : MonoBehaviour
             {
                 case 0:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
-                    Debug.Log("a");
                     break;
                 case 1:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
                     break;
                 case 2:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
-                    Debug.Log("b");
                     break;
                 case 3:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
