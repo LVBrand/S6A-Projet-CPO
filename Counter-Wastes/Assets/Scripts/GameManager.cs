@@ -158,6 +158,7 @@ public class GameManager : Singleton<GameManager>
     {
         Vies = 3;
         Currency = 40;
+
         InvokeRepeating("GenerateCurrency", 0.5f, 4f);
     }
 

@@ -24,6 +24,10 @@ public class Monster : MonoBehaviour
 
     private float speed;
 
+    public AnimationCurve yCurve, lCurve, hCurve;
+    private float timeElapsed = 0;
+    private float YstartPosition;
+
     public float Life
     {
         get
@@ -47,15 +51,25 @@ public class Monster : MonoBehaviour
     private void Update()
     {
         Move();
+        animationUpdate();
     }
 
+    private void animationUpdate()
+    {
+        timeElapsed += Time.deltaTime;
+        if (timeElapsed >= yCurve[yCurve.length - 1].time) timeElapsed = 0;
+        transform.position = new Vector2(transform.position.x, YstartPosition + 0.3f*yCurve.Evaluate(timeElapsed));
+        transform.localScale = new Vector2(1 + 0.1f * lCurve.Evaluate(timeElapsed), 1 + 0.1f * hCurve.Evaluate(timeElapsed)); ;
+    }
     public void Spawn()
     {
+        timeElapsed = 0;
         int nbLane = Random.Range(0, 6);
         transform.position = LevelManager.Instance.spawn[nbLane].transform.position;
         life = maxLife;
         this.speed = maxSpeed;
         transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+        YstartPosition = transform.position.y;
     }
 
     private void Move()

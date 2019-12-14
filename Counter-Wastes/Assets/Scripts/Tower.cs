@@ -48,7 +48,7 @@ public class Tower : MonoBehaviour
     {
         foreach (Monster m in GameManager.Instance.ActiveMonsters)
         {
-            if (m.transform.position.y+0.5f == transform.position.y && m.transform.position.x > transform.position.x)
+            if (m.transform.position.y+0.7f >= transform.position.y && m.transform.position.y - 0.3f <= transform.position.y && m.transform.position.x > transform.position.x)
             {
                 return true;
             }
@@ -70,14 +70,12 @@ public class Tower : MonoBehaviour
             {
                 case 0:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
-                    Debug.Log("a");
                     break;
                 case 1:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
                     break;
                 case 2:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
-                    Debug.Log("b");
                     break;
                 case 3:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
@@ -110,6 +108,7 @@ public class Tower : MonoBehaviour
                 {
                     GameManager.Instance.RemoveSunTower(gameObject.GetComponent<Tower>());
                 }
+                Hover.Instance.Deactivate();
                 Destroy(this.gameObject);
                 parentTile.IsEmpty = true;
 
