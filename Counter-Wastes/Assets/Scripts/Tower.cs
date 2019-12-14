@@ -108,6 +108,7 @@ public class Tower : MonoBehaviour
                 {
                     GameManager.Instance.RemoveSunTower(gameObject.GetComponent<Tower>());
                 }
+                Hover.Instance.Deactivate();
                 Destroy(this.gameObject);
                 parentTile.IsEmpty = true;
 
