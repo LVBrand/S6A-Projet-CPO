@@ -11,8 +11,6 @@ public class Tower : MonoBehaviour
 
     [SerializeField]
     private float maxLife;
-
-    private string towerIndex = "tower";
     
     public float Life
     {
@@ -26,7 +24,6 @@ public class Tower : MonoBehaviour
             if (life <= 0)
             {
                 life = 0;
-                SoundManager.Instance.DeathSound("tower");
             }
         }
     }
