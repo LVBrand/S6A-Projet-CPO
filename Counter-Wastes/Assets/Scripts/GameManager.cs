@@ -179,7 +179,6 @@ public class GameManager : Singleton<GameManager>
                 this.ClickedButton = towerButton;
                 //active l'icone de Hover
                 Hover.Instance.Activate(towerButton.Sprite);
-                SoundManager.Instance.PlaySFX("wpn_select");
             }
         }
 
@@ -201,7 +200,6 @@ public class GameManager : Singleton<GameManager>
     {
         selectedTower = tower;
         selectedTower.Select();
-        SoundManager.Instance.PlaySFX("wpn_moveselect");
     }
 
 

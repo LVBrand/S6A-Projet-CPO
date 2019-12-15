@@ -38,9 +38,4 @@ public class MainMenu : MonoBehaviour
             OptionsBack();
         }
     }
- 
-
- 
-    
-
 }

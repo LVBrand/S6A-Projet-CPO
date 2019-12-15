@@ -50,7 +50,7 @@ public class TowerButton : MonoBehaviour
             priceTxt.text = price + "$";
         else
         {
-            priceTxt.text = "Razer tour";
+            priceTxt.text = "Delete Tower";
         }
     }
 }

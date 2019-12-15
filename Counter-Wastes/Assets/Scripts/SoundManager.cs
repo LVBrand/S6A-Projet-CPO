@@ -148,6 +148,24 @@ public class SoundManager : Singleton<SoundManager>
         {
             musicSource.pitch = 1f;
         }
-
     }
+
+    public void TowerButtonClickSound()
+    {
+        if (!GameManager.Instance.WaveActive)
+        {
+            PlaySFX("wpn_denyselect");
+        }
+        else
+        {
+            PlaySFX("wpn_select");
+        }
+        
+    }
+
+    public void TowerButtonRollSound()
+    {
+        PlaySFX("wpn_moveselect");
+    }
+
 }
