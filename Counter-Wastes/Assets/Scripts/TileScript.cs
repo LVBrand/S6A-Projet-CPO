@@ -62,16 +62,14 @@ public class TileScript : MonoBehaviour
     // chopper la position du curseur
     private void OnMouseOver()
     {
-        ColorTile(fullColor);
-
         // vérifie si la souris n'est pas sur un bouton, pour ne pas placer une tour sur un bouton
-        if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.ClickedButton != null && GameManager.Instance.ClickedButton.name != "removeTowerButton")
+        if (GameManager.Instance.ClickedButton != null && GameManager.Instance.ClickedButton.name != "removeTowerButton")
         {
             if (IsEmpty)
             {
                 ColorTile(emptyColor);
             }
-            if (!IsEmpty)
+            if (!IsEmpty || tag != "Tile_Placable")
             {
                 ColorTile(fullColor);
             }
@@ -84,6 +82,29 @@ public class TileScript : MonoBehaviour
                     PlaceTower();
                 }
 
+            }
+            if (!GameManager.Instance.ClickedButton || GameManager.Instance.ClickedButton.name != "removeTowerButton") return;
+        } else if (GameManager.Instance.ClickedButton && GameManager.Instance.ClickedButton.name == "removeTowerButton")
+        {
+            if (IsEmpty)
+            {
+                ColorTile(fullColor);
+            }
+            else
+            {
+                ColorTile(emptyColor);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    GameManager.Instance.Currency += 5;
+                    if (tag == "sun_tower")
+                    {
+                        GameManager.Instance.RemoveSunTower(gameObject.GetComponent<Tower>());
+                    }
+                    Hover.Instance.Deactivate();
+                    Destroy(this.gameObject);
+                    IsEmpty = true;
+                    ColorTile(Color.white);
+                }
             }
         }
     }
