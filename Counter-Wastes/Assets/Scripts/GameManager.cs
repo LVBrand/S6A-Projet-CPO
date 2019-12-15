@@ -284,6 +284,7 @@ public class GameManager : Singleton<GameManager>
             gameOver = true;
             gameOverMenu.SetActive(true);
             Time.timeScale = 0;
+            SoundManager.Instance.GameOverSound();
         }
     }
 

@@ -168,4 +168,9 @@ public class SoundManager : Singleton<SoundManager>
         PlaySFX("wpn_moveselect");
     }
 
+    public void GameOverSound()
+    {
+        PlaySFX("flatline");
+    }
+
 }
