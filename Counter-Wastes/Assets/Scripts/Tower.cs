@@ -107,6 +107,7 @@ public class Tower : MonoBehaviour
             Hover.Instance.Deactivate();
             Destroy(this.gameObject);
             parentTile.IsEmpty = true;
+            
 
         }
     }

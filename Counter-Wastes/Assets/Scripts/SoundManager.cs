@@ -15,7 +15,7 @@ public class SoundManager : Singleton<SoundManager>
     private Slider sfxSlider;
 
     [SerializeField]
-    private Slider MusicSlider;
+    private Slider musicSlider;
 
     Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>();
 
@@ -119,5 +119,35 @@ public class SoundManager : Singleton<SoundManager>
             }
             PlaySFX((string)type);
         }
+    }
+
+    public void UpdateVolume()
+    {
+        musicSource.volume = musicSlider.value;
+        sfxSource.volume = sfxSlider.value;
+    }
+
+
+    public void ClickSound()
+    {
+        PlaySFX("buttonclickrelease");
+    }
+
+    public void RollSound()
+    {
+        PlaySFX("buttonrollover");
+    }
+
+    public void MenuPopMusic(string order)
+    {
+        if (order == "cut")
+        {
+            musicSource.pitch = 0f;
+        }
+        if (order == "go")
+        {
+            musicSource.pitch = 1f;
+        }
+
     }
 }

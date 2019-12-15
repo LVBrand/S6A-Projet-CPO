@@ -179,6 +179,7 @@ public class GameManager : Singleton<GameManager>
                 this.ClickedButton = towerButton;
                 //active l'icone de Hover
                 Hover.Instance.Activate(towerButton.Sprite);
+                SoundManager.Instance.PlaySFX("wpn_select");
             }
         }
 
@@ -191,6 +192,7 @@ public class GameManager : Singleton<GameManager>
         if (Currency >= ClickedButton.Price)
         {
             Currency -= ClickedButton.Price;
+            SoundManager.Instance.PlaySFX("wpn_hudoff");
             Hover.Instance.Deactivate();
         }
     }
@@ -199,6 +201,7 @@ public class GameManager : Singleton<GameManager>
     {
         selectedTower = tower;
         selectedTower.Select();
+        SoundManager.Instance.PlaySFX("wpn_moveselect");
     }
 
 
@@ -310,10 +313,12 @@ public class GameManager : Singleton<GameManager>
             inGameMenu.SetActive(!inGameMenu.activeSelf);
             if (!inGameMenu.activeSelf)
             {
+                SoundManager.Instance.MenuPopMusic("go");
                 Time.timeScale = 1;
             }
             else
             {
+                SoundManager.Instance.MenuPopMusic("cut");
                 Time.timeScale = 0;
             }
         }

@@ -335,7 +335,6 @@ GameObject:
   - component: {fileID: 171472320}
   - component: {fileID: 171472319}
   - component: {fileID: 171472318}
-  - component: {fileID: 171472317}
   - component: {fileID: 171472316}
   m_Layer: 5
   m_Name: RestartButton
@@ -380,7 +379,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 171472317}
+        - m_Target: {fileID: 716933923}
           m_MethodName: RollSound
           m_Mode: 1
           m_Arguments:
@@ -395,7 +394,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 171472317}
+        - m_Target: {fileID: 716933923}
           m_MethodName: ClickSound
           m_Mode: 1
           m_Arguments:
@@ -407,21 +406,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   delegates: []
---- !u!114 &171472317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171472314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d88c26f623b6640a11d836d0733644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button_AudioSource: {fileID: 171472318}
-  button_click_sound: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  button_roll_sound: {fileID: 8300000, guid: 684ddca3473ae734fb13ab23c05241e4, type: 3}
 --- !u!82 &171472318
 AudioSource:
   m_ObjectHideFlags: 0
@@ -432,9 +416,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.417
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -939,10 +923,21 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 716933923}
+        m_MethodName: UpdateVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &345986215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,7 +1283,6 @@ GameObject:
   - component: {fileID: 530865643}
   - component: {fileID: 530865642}
   - component: {fileID: 530865641}
-  - component: {fileID: 530865640}
   - component: {fileID: 530865639}
   m_Layer: 5
   m_Name: RestartButton
@@ -1333,7 +1327,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 530865640}
+        - m_Target: {fileID: 716933923}
           m_MethodName: RollSound
           m_Mode: 1
           m_Arguments:
@@ -1348,7 +1342,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 530865640}
+        - m_Target: {fileID: 716933923}
           m_MethodName: ClickSound
           m_Mode: 1
           m_Arguments:
@@ -1360,21 +1354,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   delegates: []
---- !u!114 &530865640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530865637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d88c26f623b6640a11d836d0733644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button_AudioSource: {fileID: 530865641}
-  button_click_sound: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  button_roll_sound: {fileID: 8300000, guid: 684ddca3473ae734fb13ab23c05241e4, type: 3}
 --- !u!82 &530865641
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1385,9 +1364,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.417
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1570,7 +1549,6 @@ GameObject:
   - component: {fileID: 532971995}
   - component: {fileID: 532971994}
   - component: {fileID: 532971993}
-  - component: {fileID: 532971992}
   - component: {fileID: 532971991}
   m_Layer: 5
   m_Name: QuitButton
@@ -1615,7 +1593,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 532971992}
+        - m_Target: {fileID: 716933923}
           m_MethodName: RollSound
           m_Mode: 1
           m_Arguments:
@@ -1630,7 +1608,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 532971992}
+        - m_Target: {fileID: 716933923}
           m_MethodName: ClickSound
           m_Mode: 1
           m_Arguments:
@@ -1642,21 +1620,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   delegates: []
---- !u!114 &532971992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532971989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d88c26f623b6640a11d836d0733644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button_AudioSource: {fileID: 532971993}
-  button_click_sound: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  button_roll_sound: {fileID: 8300000, guid: 684ddca3473ae734fb13ab23c05241e4, type: 3}
 --- !u!82 &532971993
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1667,9 +1630,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.417
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1941,8 +1904,8 @@ RectTransform:
   m_Father: {fileID: 1006596385}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1994,7 +1957,6 @@ GameObject:
   - component: {fileID: 685736635}
   - component: {fileID: 685736634}
   - component: {fileID: 685736633}
-  - component: {fileID: 685736632}
   - component: {fileID: 685736631}
   m_Layer: 5
   m_Name: QuitButton
@@ -2039,7 +2001,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 685736632}
+        - m_Target: {fileID: 716933923}
           m_MethodName: RollSound
           m_Mode: 1
           m_Arguments:
@@ -2054,7 +2016,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 685736632}
+        - m_Target: {fileID: 716933923}
           m_MethodName: ClickSound
           m_Mode: 1
           m_Arguments:
@@ -2066,21 +2028,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   delegates: []
---- !u!114 &685736632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 685736629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d88c26f623b6640a11d836d0733644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button_AudioSource: {fileID: 685736633}
-  button_click_sound: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  button_roll_sound: {fileID: 8300000, guid: 684ddca3473ae734fb13ab23c05241e4, type: 3}
 --- !u!82 &685736633
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2091,9 +2038,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.417
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2366,7 +2313,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 93cd3b54a1c55ea42a70742b619f3edc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2479,7 +2426,7 @@ MonoBehaviour:
   musicSource: {fileID: 716933921}
   sfxSource: {fileID: 716933924}
   sfxSlider: {fileID: 308419240}
-  MusicSlider: {fileID: 1685214738}
+  musicSlider: {fileID: 1685214738}
 --- !u!82 &716933924
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2491,7 +2438,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2625,7 +2572,6 @@ GameObject:
   - component: {fileID: 810135353}
   - component: {fileID: 810135352}
   - component: {fileID: 810135351}
-  - component: {fileID: 810135350}
   - component: {fileID: 810135349}
   m_Layer: 5
   m_Name: OptionsButton
@@ -2670,7 +2616,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 810135350}
+        - m_Target: {fileID: 716933923}
           m_MethodName: RollSound
           m_Mode: 1
           m_Arguments:
@@ -2685,7 +2631,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 810135350}
+        - m_Target: {fileID: 716933923}
           m_MethodName: ClickSound
           m_Mode: 1
           m_Arguments:
@@ -2697,21 +2643,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   delegates: []
---- !u!114 &810135350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810135347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d88c26f623b6640a11d836d0733644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button_AudioSource: {fileID: 810135351}
-  button_click_sound: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  button_roll_sound: {fileID: 8300000, guid: 684ddca3473ae734fb13ab23c05241e4, type: 3}
 --- !u!82 &810135351
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2722,9 +2653,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.417
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2906,6 +2837,8 @@ GameObject:
   - component: {fileID: 839582840}
   - component: {fileID: 839582839}
   - component: {fileID: 839582838}
+  - component: {fileID: 839582841}
+  - component: {fileID: 839582842}
   m_Layer: 5
   m_Name: WaveButton
   m_TagString: Untagged
@@ -3020,6 +2953,146 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839582836}
   m_CullTransparentMesh: 0
+--- !u!82 &839582841
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839582836}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &839582842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839582836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 716933923}
+          m_MethodName: RollSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 716933923}
+          m_MethodName: ClickSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  delegates: []
 --- !u!1 &863848969
 GameObject:
   m_ObjectHideFlags: 0
@@ -3512,7 +3585,6 @@ GameObject:
   - component: {fileID: 1089361930}
   - component: {fileID: 1089361929}
   - component: {fileID: 1089361928}
-  - component: {fileID: 1089361927}
   - component: {fileID: 1089361926}
   m_Layer: 5
   m_Name: ResumeGameButton
@@ -3557,7 +3629,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1089361927}
+        - m_Target: {fileID: 716933923}
           m_MethodName: RollSound
           m_Mode: 1
           m_Arguments:
@@ -3572,7 +3644,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1089361927}
+        - m_Target: {fileID: 716933923}
           m_MethodName: ClickSound
           m_Mode: 1
           m_Arguments:
@@ -3584,21 +3656,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   delegates: []
---- !u!114 &1089361927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089361924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d88c26f623b6640a11d836d0733644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button_AudioSource: {fileID: 1089361928}
-  button_click_sound: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  button_roll_sound: {fileID: 8300000, guid: 684ddca3473ae734fb13ab23c05241e4, type: 3}
 --- !u!82 &1089361928
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3609,9 +3666,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.417
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3958,7 +4015,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5047,10 +5104,21 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 716933923}
+        m_MethodName: UpdateVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1744117884
 GameObject:
   m_ObjectHideFlags: 0
@@ -5300,8 +5368,8 @@ RectTransform:
   m_Father: {fileID: 2055268560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5462,7 +5530,6 @@ GameObject:
   - component: {fileID: 1894151201}
   - component: {fileID: 1894151200}
   - component: {fileID: 1894151199}
-  - component: {fileID: 1894151198}
   - component: {fileID: 1894151197}
   m_Layer: 5
   m_Name: BackButton
@@ -5507,7 +5574,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1894151198}
+        - m_Target: {fileID: 716933923}
           m_MethodName: RollSound
           m_Mode: 1
           m_Arguments:
@@ -5522,7 +5589,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1894151198}
+        - m_Target: {fileID: 716933923}
           m_MethodName: ClickSound
           m_Mode: 1
           m_Arguments:
@@ -5534,21 +5601,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   delegates: []
---- !u!114 &1894151198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894151195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d88c26f623b6640a11d836d0733644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button_AudioSource: {fileID: 1894151199}
-  button_click_sound: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  button_roll_sound: {fileID: 8300000, guid: 684ddca3473ae734fb13ab23c05241e4, type: 3}
 --- !u!82 &1894151199
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5559,9 +5611,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64cea7df1351b074397bbc4d8d400d99, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.417
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5980,7 +6032,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
