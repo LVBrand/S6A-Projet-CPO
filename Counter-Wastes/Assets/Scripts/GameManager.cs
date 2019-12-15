@@ -157,7 +157,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         Vies = 3;
-        Currency = 3500;
+        Currency = 35;
         InvokeRepeating("GenerateCurrency", 0.5f, 4f);
     }
 
@@ -236,7 +236,6 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        Debug.Log(Mathf.RoundToInt(Mathf.Exp(wave / 3f)));
         for (int i = 0; i < Mathf.RoundToInt(Mathf.Exp(wave/3f)); i++)
         {
             int monsterIndex = Random.Range(0, 2);

@@ -95,13 +95,14 @@ public class TileScript : MonoBehaviour
                 ColorTile(emptyColor);
                 if (Input.GetMouseButtonDown(0))
                 {
+                    Tower tower = transform.GetChild(0).GetComponent<Tower>();
                     GameManager.Instance.Currency += 5;
-                    if (tag == "sun_tower")
+                    if (tower.tag == "sun_tower")
                     {
                         GameManager.Instance.RemoveSunTower(gameObject.GetComponent<Tower>());
                     }
                     Hover.Instance.Deactivate();
-                    Destroy(this.gameObject);
+                    Destroy(tower.gameObject);
                     IsEmpty = true;
                     ColorTile(Color.white);
                 }
