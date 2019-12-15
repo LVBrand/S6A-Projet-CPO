@@ -14,6 +14,9 @@ public class GameManager : Singleton<GameManager>
     private Text currencyTxt;
 
     [SerializeField]
+    private Text currencyEffectTxt;
+
+    [SerializeField]
     private GameObject waveButton;
 
     [SerializeField]
@@ -74,8 +77,34 @@ public class GameManager : Singleton<GameManager>
 
         set
         {
+            if (value == currency)
+            {
+                return;
+            }
+            currencyEffectTxt.transform.position = currencyTxt.transform.position + new Vector3(10,-5,0);
+            if (value > currency)
+            {
+                currencyEffectTxt.text = (value - currency).ToString() + "$";
+                currencyEffectTxt.color = new Color(0, 1, 0, 1f);
+            }
+            else
+            {
+                currencyEffectTxt.text = (currency - value).ToString() + "$";
+                currencyEffectTxt.color = new Color(1, 0, 0, 1f);
+            }
+            StartCoroutine(effectCurrency());
             this.currency = value;
             this.currencyTxt.text = "<color=lime>$</color>" + value.ToString();
+        }
+    }
+
+    private IEnumerator effectCurrency()
+    {
+        for (int i = 0; i<100; i++)
+        {
+            currencyEffectTxt.transform.position -= new Vector3(0, 0.1f,0);
+            currencyEffectTxt.color -= new Color(0,0,0,0.01f);
+            yield return new WaitForSeconds(0.005f);
         }
     }
 
@@ -114,7 +143,7 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return /*activeMonsters.Count > 0 &&*/ remainingMonsters>0;
+            return remainingMonsters>0;
         }
     } 
 
@@ -128,8 +157,8 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         Vies = 3;
-        Currency = 20;
-        InvokeRepeating("GenerateCurrency", 0.5f, 2f);
+        Currency = 35;
+        InvokeRepeating("GenerateCurrency", 0.5f, 4f);
     }
 
 
@@ -196,7 +225,7 @@ public class GameManager : Singleton<GameManager>
         wave++;
 
         waveText.text = string.Format("Wave: <color=lime>{0}</color>", wave);
-        remainingMonsters += wave;
+        remainingMonsters = Mathf.RoundToInt(Mathf.Exp(wave / 3f));
         StartCoroutine(SpawnWave());
 
         waveButton.SetActive(false);
@@ -207,7 +236,7 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        for (int i = 0; i < wave; i++)
+        for (int i = 0; i < Mathf.RoundToInt(Mathf.Exp(wave/3f)); i++)
         {
             int monsterIndex = Random.Range(0, 2);
 
@@ -232,7 +261,7 @@ public class GameManager : Singleton<GameManager>
 
             activeMonsters.Add(monster);
 
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(Mathf.Exp(-wave/2f+1.50f)*2f+0.5f);
         }
     }
 

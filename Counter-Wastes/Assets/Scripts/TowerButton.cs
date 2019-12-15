@@ -17,6 +17,9 @@ public class TowerButton : MonoBehaviour
     [SerializeField]
     private Text priceTxt;
 
+    [SerializeField]
+    private bool buttonRemove;
+
     public GameObject TowerPrefab
     {
         get
@@ -43,6 +46,11 @@ public class TowerButton : MonoBehaviour
 
     private void Start()
     {
-        priceTxt.text = price + "$";
+        if(!buttonRemove)
+            priceTxt.text = price + "$";
+        else
+        {
+            priceTxt.text = "Razer tour";
+        }
     }
 }

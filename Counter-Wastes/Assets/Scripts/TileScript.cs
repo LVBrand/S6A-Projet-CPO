@@ -24,6 +24,7 @@ public class TileScript : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+
     //avoir le centre d'un tile
     public Vector2 WorldPosition
     {
@@ -61,16 +62,14 @@ public class TileScript : MonoBehaviour
     // chopper la position du curseur
     private void OnMouseOver()
     {
-        ColorTile(fullColor);
-
         // vérifie si la souris n'est pas sur un bouton, pour ne pas placer une tour sur un bouton
-        if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.ClickedButton != null)
+        if (GameManager.Instance.ClickedButton != null && GameManager.Instance.ClickedButton.name != "removeTowerButton")
         {
             if (IsEmpty)
             {
                 ColorTile(emptyColor);
             }
-            if (!IsEmpty)
+            if (!IsEmpty || tag != "Tile_Placable")
             {
                 ColorTile(fullColor);
             }
@@ -84,6 +83,30 @@ public class TileScript : MonoBehaviour
                 }
 
             }
+            if (!GameManager.Instance.ClickedButton || GameManager.Instance.ClickedButton.name != "removeTowerButton") return;
+        } else if (GameManager.Instance.ClickedButton && GameManager.Instance.ClickedButton.name == "removeTowerButton")
+        {
+            if (IsEmpty)
+            {
+                ColorTile(fullColor);
+            }
+            else
+            {
+                ColorTile(emptyColor);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Tower tower = transform.GetChild(0).GetComponent<Tower>();
+                    GameManager.Instance.Currency += 5;
+                    if (tower.tag == "sun_tower")
+                    {
+                        GameManager.Instance.RemoveSunTower(gameObject.GetComponent<Tower>());
+                    }
+                    Hover.Instance.Deactivate();
+                    Destroy(tower.gameObject);
+                    IsEmpty = true;
+                    ColorTile(Color.white);
+                }
+            }
         }
     }
 
@@ -94,29 +117,30 @@ public class TileScript : MonoBehaviour
 
     private void PlaceTower()
     {
-        // on instancie les tours
-        GameObject tower = (GameObject)Instantiate(GameManager.Instance.ClickedButton.TowerPrefab, transform.position, Quaternion.identity);
-        if (tower.tag == "sun_tower")
+        if (GameManager.Instance.ClickedButton.name != "removeTowerButton")
         {
-            GameManager.Instance.ActiveSunTowers.Add(tower.GetComponent<Tower>());
+
+            // on instancie les tours
+            GameObject tower = (GameObject)Instantiate(GameManager.Instance.ClickedButton.TowerPrefab, transform.position, Quaternion.identity);
+            if (tower.tag == "sun_tower")
+            {
+                GameManager.Instance.ActiveSunTowers.Add(tower.GetComponent<Tower>());
+            }
+            // on fait en sorte que les sprites se chevauchent suivant l'ordre de Y (relief)
+            tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.Y;
+
+            // fait en sorte que quand on place une tour, elle est instanciée comme objet fille du tile où elle est placée
+            tower.transform.SetParent(transform);
+
+            ColorTile(Color.white);
+
+            IsEmpty = false;
+
+            GameManager.Instance.BuyTower();
         }
-        // on fait en sorte que les sprites se chevauchent suivant l'ordre de Y (relief)
-        tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.Y;
-
-        // fait en sorte que quand on place une tour, elle est instanciée comme objet fille du tile où elle est placée
-        tower.transform.SetParent(transform);
-
-        ColorTile(Color.white);
-
-        IsEmpty = false;
-
-        GameManager.Instance.BuyTower();
-
-
-
     }
 
-    private void ColorTile(Color newColor)
+    public void ColorTile(Color newColor)
     {
         spriteRenderer.color = newColor;
     }

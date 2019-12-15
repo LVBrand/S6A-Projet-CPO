@@ -11,6 +11,8 @@ public class Tower : MonoBehaviour
 
     [SerializeField]
     private float maxLife;
+
+    private string towerIndex = "tower";
     
     public float Life
     {
@@ -24,6 +26,7 @@ public class Tower : MonoBehaviour
             if (life <= 0)
             {
                 life = 0;
+                SoundManager.Instance.DeathSound("tower");
             }
         }
     }
@@ -48,7 +51,7 @@ public class Tower : MonoBehaviour
     {
         foreach (Monster m in GameManager.Instance.ActiveMonsters)
         {
-            if (m.transform.position.y+0.5f == transform.position.y && m.transform.position.x > transform.position.x)
+            if (m.transform.position.y+0.7f >= transform.position.y && m.transform.position.y - 0.3f <= transform.position.y && m.transform.position.x > transform.position.x)
             {
                 return true;
             }
@@ -56,7 +59,12 @@ public class Tower : MonoBehaviour
         return false;
     }
 
-    public IEnumerator damageFlash()
+    public void flickering()
+    {
+        StartCoroutine("damageFlash");
+    }
+
+    private IEnumerator damageFlash()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -65,14 +73,12 @@ public class Tower : MonoBehaviour
             {
                 case 0:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
-                    Debug.Log("a");
                     break;
                 case 1:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
                     break;
                 case 2:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
-                    Debug.Log("b");
                     break;
                 case 3:
                     transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
@@ -80,6 +86,34 @@ public class Tower : MonoBehaviour
             }
             yield return new WaitForSeconds(0.10f);
         }
+    }
+
+
+    private void OnMouseOver()
+    {
+        if (!GameManager.Instance.ClickedButton || GameManager.Instance.ClickedButton.name != "removeTowerButton") return;
+        Color fullColor = new Color32(255, 142, 142, 255);
+        Color32 emptyColor = new Color32(96, 255, 90, 255);
+        TileScript parentTile = transform.parent.GetComponent<TileScript>();
+        transform.parent.GetComponent<TileScript>().ColorTile(fullColor);
+        parentTile.ColorTile(emptyColor);
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameManager.Instance.Currency += 5;
+            if (tag == "sun_tower")
+            {
+                GameManager.Instance.RemoveSunTower(gameObject.GetComponent<Tower>());
+            }
+            Hover.Instance.Deactivate();
+            Destroy(this.gameObject);
+            parentTile.IsEmpty = true;
+
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        transform.parent.GetComponent<TileScript>().ColorTile(Color.white);
     }
 
 
