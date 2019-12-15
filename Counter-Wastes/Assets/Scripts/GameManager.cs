@@ -157,8 +157,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         Vies = 3;
-        Currency = 40;
-
+        Currency = 35;
         InvokeRepeating("GenerateCurrency", 0.5f, 4f);
     }
 
@@ -226,7 +225,7 @@ public class GameManager : Singleton<GameManager>
         wave++;
 
         waveText.text = string.Format("Wave: <color=lime>{0}</color>", wave);
-        remainingMonsters += wave;
+        remainingMonsters = Mathf.RoundToInt(Mathf.Exp(wave / 3f));
         StartCoroutine(SpawnWave());
 
         waveButton.SetActive(false);
@@ -237,7 +236,7 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        for (int i = 0; i < wave; i++)
+        for (int i = 0; i < Mathf.RoundToInt(Mathf.Exp(wave/3f)); i++)
         {
             int monsterIndex = Random.Range(0, 2);
 
@@ -262,7 +261,7 @@ public class GameManager : Singleton<GameManager>
 
             activeMonsters.Add(monster);
 
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(Mathf.Exp(-wave/2f+1.50f)*2f+0.5f);
         }
     }
 

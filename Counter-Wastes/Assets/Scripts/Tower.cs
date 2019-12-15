@@ -93,26 +93,18 @@ public class Tower : MonoBehaviour
         Color32 emptyColor = new Color32(96, 255, 90, 255);
         TileScript parentTile = transform.parent.GetComponent<TileScript>();
         transform.parent.GetComponent<TileScript>().ColorTile(fullColor);
-
-        if (parentTile.IsEmpty)
+        parentTile.ColorTile(emptyColor);
+        if (Input.GetMouseButtonDown(0))
         {
-            parentTile.ColorTile(fullColor);
-        }
-        else
-        {
-            parentTile.ColorTile(emptyColor);
-            if (Input.GetMouseButtonDown(0))
+            GameManager.Instance.Currency += 5;
+            if (tag == "sun_tower")
             {
-                GameManager.Instance.Currency += 5;
-                if (tag == "sun_tower")
-                {
-                    GameManager.Instance.RemoveSunTower(gameObject.GetComponent<Tower>());
-                }
-                Hover.Instance.Deactivate();
-                Destroy(this.gameObject);
-                parentTile.IsEmpty = true;
-
+                GameManager.Instance.RemoveSunTower(gameObject.GetComponent<Tower>());
             }
+            Hover.Instance.Deactivate();
+            Destroy(this.gameObject);
+            parentTile.IsEmpty = true;
+
         }
     }
 
