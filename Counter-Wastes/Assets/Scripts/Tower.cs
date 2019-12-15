@@ -11,6 +11,8 @@ public class Tower : MonoBehaviour
 
     [SerializeField]
     private float maxLife;
+
+    private string towerIndex = "tower";
     
     public float Life
     {

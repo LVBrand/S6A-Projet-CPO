@@ -45,6 +45,7 @@ public class SoundManager : Singleton<SoundManager>
         sfxSource.PlayOneShot(audioClips[name]);
     }
 
+
     public void Hitsound(string index)
     {
         if (index == "monster")
@@ -149,5 +150,4 @@ public class SoundManager : Singleton<SoundManager>
         }
 
     }
-
 }

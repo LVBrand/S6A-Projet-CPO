@@ -24,6 +24,8 @@ public class Monster : MonoBehaviour
 
     private float speed;
 
+    private string monsterIndex = "monster";
+
     public AnimationCurve yCurve, lCurve, hCurve;
     private float timeElapsed = 0;
     private float YstartPosition;
@@ -130,6 +132,7 @@ public class Monster : MonoBehaviour
                     Destroy(tower);
                     speed = maxSpeed;
                     break;
+                    
                 }
                 tower.transform.parent.GetComponent<TileScript>().IsEmpty = true;
                 Destroy(tower);
