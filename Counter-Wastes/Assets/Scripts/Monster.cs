@@ -40,6 +40,7 @@ public class Monster : MonoBehaviour
             if (life <= 0)
             {
                 life = 0;
+                SoundManager.Instance.DeathSound("monster");
                 Release();
             }
         }
@@ -100,6 +101,7 @@ public class Monster : MonoBehaviour
         {
             StartCoroutine(damageFlash());
             Life-=otherObject.gameObject.GetComponent<Projectile>().Damage;
+            SoundManager.Instance.Hitsound("monster");
             GameManager.Instance.Pool.ReleaseObject(otherObject.gameObject);
         }
     }
@@ -117,6 +119,7 @@ public class Monster : MonoBehaviour
             }
             tower.GetComponent<Tower>().flickering();
             tower.GetComponent<Tower>().Life -= damage;
+            SoundManager.Instance.Hitsound("tower");
 
             if (tower.GetComponent<Tower>().Life == 0)
             {

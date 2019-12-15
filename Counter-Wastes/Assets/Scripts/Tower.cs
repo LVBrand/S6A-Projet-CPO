@@ -24,6 +24,7 @@ public class Tower : MonoBehaviour
             if (life <= 0)
             {
                 life = 0;
+                SoundManager.Instance.DeathSound("tower");
             }
         }
     }
