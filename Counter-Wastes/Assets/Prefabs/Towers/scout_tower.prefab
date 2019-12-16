@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6568995592664656288}
   - component: {fileID: 61061386805610594}
   - component: {fileID: 114108512187463192}
+  - component: {fileID: 95311604429593604}
   m_Layer: 0
   m_Name: scout_tower
   m_TagString: scout_tower
@@ -121,3 +122,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reloadTime: 1.2
   maxLife: 75
+--- !u!95 &95311604429593604
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478992757911758821}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 29ac45bb1595838449c20ffd8c5ae3ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

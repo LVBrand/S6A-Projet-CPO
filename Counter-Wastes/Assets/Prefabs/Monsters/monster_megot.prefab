@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 50705079913412302}
   - component: {fileID: 95178940338672866}
   m_Layer: 0
-  m_Name: monster_gaben
+  m_Name: monster_megot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,16 +129,16 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -6
-      outSlope: -6
+      value: 0.2
+      inSlope: -1.2
+      outSlope: -1.2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.25
-      value: -0.5
+      value: -0.1
       inSlope: -0.0941152
       outSlope: -0.0941152
       tangentMode: 0
@@ -156,18 +156,18 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.75
-      value: -0.5
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 34
+      value: -0.1
+      inSlope: -0.03125179
+      outSlope: -0.03125179
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.6833334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 6
-      outSlope: 6
+      value: 0.2
+      inSlope: 1.2
+      outSlope: 1.2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -180,18 +180,18 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: -0.5
-      inSlope: 5.587168
-      outSlope: 5.587168
+      value: -0.1
+      inSlope: 1.1174337
+      outSlope: 1.1174337
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.2684723
-      value: 1
-      inSlope: 0.6340151
-      outSlope: 0.6340151
+      value: 0.2
+      inSlope: 0.12680304
+      outSlope: 0.12680304
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -199,26 +199,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.5
       value: 0
-      inSlope: -0.15956903
-      outSlope: -0.15956903
+      inSlope: -0.031913787
+      outSlope: -0.031913787
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.75
-      value: 1
-      inSlope: -1
-      outSlope: -1
+      value: 0.2
+      inSlope: -0.20000002
+      outSlope: -0.20000002
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: -0.5
-      inSlope: -6
-      outSlope: -6
+      value: -0.1
+      inSlope: -1.2
+      outSlope: -1.2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -283,7 +283,7 @@ Animator:
   m_GameObject: {fileID: 9114681623591492742}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a0efb3bb9bb9cf744ba5630090e290b1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 819e4ac486791a84da24348be86c09d6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

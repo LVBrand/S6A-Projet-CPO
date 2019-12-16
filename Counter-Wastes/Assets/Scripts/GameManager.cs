@@ -239,7 +239,7 @@ public class GameManager : Singleton<GameManager>
     {
         for (int i = 0; i < Mathf.RoundToInt(Mathf.Exp(wave/3f)); i++)
         {
-            int monsterIndex = Random.Range(0, 2);
+            int monsterIndex = Random.Range(0, 3);
 
             string type = string.Empty;
 
@@ -250,6 +250,9 @@ public class GameManager : Singleton<GameManager>
                     break;
                 case 1:
                     type = "monster_knight";
+                    break;
+                case 2:
+                    type = "monster_megot";
                     break;
                 default:
                     break;
@@ -286,7 +289,7 @@ public class GameManager : Singleton<GameManager>
             Time.timeScale = 0;
             SoundManager.Instance.GameOverSound();
         }
-    }
+    } 
 
     public void Restart()
     {
