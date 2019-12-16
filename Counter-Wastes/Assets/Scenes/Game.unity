@@ -6262,7 +6262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 3236416877265135351, guid: 9e7293b7ad98bb3498dc20bd7c41fbb4,
     type: 3}
-  sprite: {fileID: 21300000, guid: 5eb465ff2dfe5cd488031818c679ef18, type: 3}
+  sprite: {fileID: 21300000, guid: 858889bc81bce374285500830f4aec22, type: 3}
   price: 0
   priceTxt: {fileID: 1427430516}
   buttonRemove: 1
@@ -6335,7 +6335,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5eb465ff2dfe5cd488031818c679ef18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 858889bc81bce374285500830f4aec22, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
